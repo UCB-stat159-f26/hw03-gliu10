@@ -1,0 +1,98 @@
+AI DOCUMENTATION - STAT 159 HW3 (tenniscareer package)
+Student: Gerald Liu
+Date: November 13, 2026
+
+------------------------------------------------------------
+1. AI TOOL USED
+------------------------------------------------------------
+Tool:  Claude, made by Anthropic
+Model: Claude Opus 5.5
+How:   Chat in the Claude desktop app, used alongside my own VS Code and terminal.
+
+------------------------------------------------------------
+2. MY ROLE (what I did)
+------------------------------------------------------------
+- Decided how the project would be run: I told Claude to work one small piece
+  at a time ("slowly, one by one") and to commit after every step, because
+  this class grades commit mechanics and workflow.
+- Directed the work at each step, asked questions when I didn't understand
+  something (for example, why pyproject.toml is needed), and decided when to
+  move on.
+- Created every folder and file myself, pasted in the code, and saved it.
+- Ran every command myself in my own terminal. I already knew the everyday
+  commands: git add, git commit, git push, git status, git log, touch, mkdir, ls,
+  and pytest.
+- Wrote all of my own commit messages.
+- Ran the package on real data (Serena Williams, Rafael Nadal, Gaston Sanchez)
+  and checked the plots and the error message.
+- Managed the repository and the commit history (about 25 small commits).
+- Personal reflections in the README: based on my own answers to Claude's
+  questions about what I learned.
+
+------------------------------------------------------------
+3. CLAUDE'S ROLE (how the AI helped)
+------------------------------------------------------------
+Coding:
+- Claude wrote the Python code for the package, since I am not yet skilled
+  enough to write it on my own. That includes the modules names.py, parse.py,
+  clean.py, fetch.py, data.py, plot.py and __init__.py, plus pyproject.toml
+  and .gitignore.
+- Claude wrote the tests (conftest.py and test_*.py), the two small profile
+  mockup files, and examples/make_figures.py. The two career mockup files
+  (FemalePlayerCareer.JS, MalePlayerCareer.JS) are copied from the assignment.
+- Claude explained what each file does and kept every function under 20 lines.
+- Claude tested each piece in its own workspace before giving it to me.
+
+Research:
+- Claude looked at the real tennisabstract.com files in a browser to confirm
+  the data format. It found that a player's birth date is in a separate file
+  (<Name>.js, "var dob=") and that a misspelled name returns a 404 error.
+
+Planning and checking:
+- Claude broke the assignment into 8 steps and kept a checklist of the
+  requirements.
+- With my permission, Claude read the files in my repo (read-only) to find
+  mistakes. It never changed my files or made commits for me.
+
+Writing:
+- Claude drafted the README (install, usage, columns, structure, tests,
+  limitations).
+- Claude drafted this AI documentation file at my request.
+
+------------------------------------------------------------
+4. TERMINAL COMMANDS CLAUDE HELPED WITH
+------------------------------------------------------------
+Claude listed the commands to run at each step, and I ran all of them myself.
+These are the ones that were new to me, which Claude explained:
+- pip install -e .  and  pip install -e ".[test]"
+  (installing my package in editable mode, with pytest)
+- python -c "..."  (running quick one-line checks of the code)
+- git commit --amend -m "..."  (fixing a commit message I pasted by mistake)
+- git push --force-with-lease  (pushing after an amend; only safe on a solo repo)
+- git diff --stat  and  wc -l  (checking that files weren't empty before
+  committing)
+
+------------------------------------------------------------
+5. PROBLEMS WE DEBUGGED TOGETHER
+------------------------------------------------------------
+- VS Code "Select an environment manager" popup: not needed, closed it.
+- Files committed before they were saved: .gitignore was empty at first, and
+  FemalePlayerCareer.JS was committed empty. pytest showed
+  "fixture not found" because conftest.py was not saved. Fixed by saving
+  (Cmd+S) and making separate fix commits.
+- tests/test_clean.py was never created, so pytest still showed 15 tests
+  instead of 20.
+- Accidentally committed a placeholder message ("your message: ...") twice,
+  fixed with git commit --amend.
+- The terminal was blocked because plt.show() was still running. Fixed by
+  closing the plot window.
+- A "!" inside a commit message made zsh show "dquote>". Fixed with Ctrl+C
+  and a message without "!".
+
+------------------------------------------------------------
+6. WHAT I LEARNED FROM WORKING THIS WAY
+------------------------------------------------------------
+Using AI for the code let me focus on what this class is about: project
+structure, small and meaningful commits, testing without the internet, and
+reproducibility. I still had to understand each piece well enough to place it,
+test it, describe it in a commit, and fix things when they broke.
